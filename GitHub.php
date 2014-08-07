@@ -38,13 +38,14 @@ class GitHub
 
 
 	/**
+	 * @param  string $owner
 	 * @param  string $repository
 	 * @param  string $sha
 	 * @return mixed
 	 */
-	function getCommit($repository, $sha)
+	function getCommit($owner, $repository, $sha)
 	{
-		return $this->call('repos/' . $repository . '/commits/' . $sha);
+		return $this->call('repos/' . $owner . '/' . $repository . '/commits/' . $sha);
 	}
 
 
@@ -59,25 +60,27 @@ class GitHub
 
 
 	/**
+	 * @param  string $owner
 	 * @param  string $repository
 	 * @param  int $number
 	 * @return mixed
 	 */
-	function getIssue($repository, $number)
+	function getIssue($owner, $repository, $number)
 	{
-		return $this->call('repos/' . $repository . '/issues/' . $number);
+		return $this->call('repos/' . $owner . '/' . $repository . '/issues/' . $number);
 	}
 
 
 	/**
+	 * @param  string $owner
 	 * @param  string $repository
 	 * @param  int $page
 	 * @param  int $perpage
 	 * @return mixed
 	 */
-	function getCommits($repository, $page, $perpage)
+	function getCommits($owner, $repository, $page, $perpage)
 	{
-		return $this->call('repos/' . $repository . '/commits', array(
+		return $this->call('repos/' . $owner . '/' . $repository . '/commits', array(
 			'page' => $page,
 			'per_page' => $perpage,
 		));
